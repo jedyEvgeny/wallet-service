@@ -6,9 +6,10 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/jedyEvgeny/wallet-service/config"
 	"github.com/jedyEvgeny/wallet-service/internal/app/endpoint"
 	"github.com/jedyEvgeny/wallet-service/internal/app/service"
+	"github.com/jedyEvgeny/wallet-service/internal/config"
+	storage "github.com/jedyEvgeny/wallet-service/internal/storage/postgresql"
 )
 
 type route struct {
@@ -18,6 +19,7 @@ type route struct {
 
 type App struct {
 	cfg      *config.Config
+	db       *storage.DataBase
 	route    *route
 	service  *service.Service
 	endpoint *endpoint.Endpoint
@@ -26,7 +28,8 @@ type App struct {
 func New() (*App, error) {
 	a := &App{}
 	a.route = createRoute()
-	a.cfg = config.MustNew()
+	a.cfg = config.MustLoad()
+	a.db = storage.MustNew(a.cfg)
 	a.service = service.New()
 	a.endpoint = endpoint.New(a.service)
 
