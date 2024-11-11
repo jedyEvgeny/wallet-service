@@ -1,4 +1,4 @@
-package endpoint
+package service
 
 import "github.com/google/uuid"
 
@@ -15,8 +15,7 @@ type Response struct {
 }
 
 const (
-	msgRequest = "[%s] Получен запрос с методом: %s от URL: %s\n"
-	msg201     = "Ресурс создан"
+	msg201 = "Ресурс создан"
 )
 
 const (
