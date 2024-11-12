@@ -8,7 +8,8 @@ import (
 )
 
 type Prepearer interface {
-	Check(*http.Request, string) ([]byte, int)
+	CheckPost(*http.Request, string) ([]byte, int)
+	CheckGet(*http.Request, string) ([]byte, int)
 }
 
 type Endpoint struct {
@@ -31,7 +32,7 @@ func (e *Endpoint) HandlerChangeWallet(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 
-	resp, status := e.prepareResponse.Check(r, reqID)
+	resp, status := e.prepareResponse.CheckPost(r, reqID)
 	w.WriteHeader(status)
 	w.Write(resp)
 }
@@ -42,7 +43,7 @@ func (e *Endpoint) HandlerStatusWallet(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 
-	resp, status := e.prepareResponse.Check(r, reqID)
+	resp, status := e.prepareResponse.CheckGet(r, reqID)
 	w.WriteHeader(status)
 	w.Write(resp)
 }

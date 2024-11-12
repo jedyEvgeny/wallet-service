@@ -27,8 +27,8 @@ type Config struct {
 		ConnMaxIdleTime        string `env:"DB_CONN_MAX_IDLE_TIME" env-default:"5m" env-description:"Макс. время ожидания для неактивных соединений в пуле БД"`
 		ConnMaxLifetime        string `env:"DB_CONN_MAX_LIFETIME" env-default:"1h" env-description:"Макс. время жизни пула соединений с БД"`
 		ConnectTimeout         int    `env:"DB_CONNECT_TIMEOUT" env-default:"10" env-description:"Время ожидания подключения к БД, [с]"`
-		StatementTimeout       int    `env:"DB_STATEMENT_TIMEOUT" env-default:"5000" env-description:"Макс время выполнения SQL-запроса, [мс]"`
-		IdleInTxSessionTimeout int    `env:"DB_IDLE_IN_TRANSACTION_SESSION_TIMEOUT" env-default:"30000" env-description:"Таймаут для завершения транзакции, если сессия простаивает, [мс]"`
+		StatementTimeout       int    `env:"DB_STATEMENT_TIMEOUT" env-default:"5000" env-description:"Макс время выполнения SQL-запроса, [мс]"`                                             //Резерв
+		IdleInTxSessionTimeout int    `env:"DB_IDLE_IN_TRANSACTION_SESSION_TIMEOUT" env-default:"30000" env-description:"Таймаут для завершения транзакции, если сессия простаивает, [мс]"` //Резерв
 	}
 }
 
@@ -47,7 +47,8 @@ func MustLoad() *Config {
 	fConfigPath := filepath.Join(workingDirApp, fNameConfig)
 
 	if _, err = os.Stat(fConfigPath); os.IsNotExist(err) {
-		log.Fatalf(isntExistFileCfg, fConfigPath)
+		log.Printf("отсутствует файл конфигурации %s: %v. Использована конфигурация по-умолчанию\n",
+			fConfigPath, err)
 	}
 
 	var cfg Config
@@ -55,5 +56,6 @@ func MustLoad() *Config {
 	if err != nil {
 		log.Fatalf(errLoadConfig, err)
 	}
+	log.Println("Конфигурация загружена")
 	return &cfg
 }

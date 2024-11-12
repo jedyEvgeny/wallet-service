@@ -39,11 +39,17 @@ func New() (*App, error) {
 func createRoute() *route {
 	return &route{
 		PostWallet:   "/api/v1/wallet",
-		StatusWallet: "api/v1/wallets/",
+		StatusWallet: "/api/v1/wallets/",
 	}
 }
 
 func (a *App) Run() error {
+	defer func() {
+		if err := a.db.Close(); err != nil {
+			log.Printf("Ошибка при закрытии базы данных: %v", err)
+		}
+	}()
+
 	a.configureRoutes()
 
 	log.Printf("Запустили сервер на хосте: %s и порту: %s\n%s\n",

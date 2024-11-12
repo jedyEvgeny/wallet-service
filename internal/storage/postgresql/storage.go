@@ -69,6 +69,10 @@ func runDB(cfg *config.Config) (*sql.DB, error) {
 	return db, nil
 }
 
+func (d *DataBase) Close() error {
+	return d.db.Close()
+}
+
 func createConnStr(cfg *config.Config) string {
 	return fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=%s connect_timeout=%d",
 		cfg.Database.Host, cfg.Database.Port, cfg.Database.User, cfg.Database.Password,

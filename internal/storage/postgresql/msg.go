@@ -5,6 +5,7 @@ const (
 	msgMigrationsNotNeed = "нет изменений схемы БД. Миграции не требуются"
 	msgMigrationsDone    = "Миграции применены"
 	msgTimeInsert        = "[%s] информация внесена в БД за время: %v"
+	msgTimeSelect        = "[%s] информация найдена в БД за время: %v"
 )
 
 const (
@@ -27,4 +28,5 @@ const (
 	errExec        = "не удалось выполнить sql-запрос: %w"
 	errRes         = "не смогли получить результаты sql-запроса: %w"
 	errResAffected = "не выполнены изменения в БД: %w"
+	errIsNoUUID    = "счёт с UUID %s не найден: %w"
 )
