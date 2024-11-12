@@ -21,7 +21,7 @@
 2. **Перейдите в каталог через терминал**:
 
    ```bash
-cd wallet-service
+   cd wallet-service
 
 Запуск: go run cmd/app/main.go config.env, 
 где config.env - путь к файлу конфигурации
