@@ -45,13 +45,15 @@
  ```
 
 ## 5. Описание работы
-Приложение по REST принимает два запроса.
-POST api/v1/wallet
+Приложение по REST принимает:
+POST api/v1/wallet с телом запроса:
+ ```bash
 {
 valletId: UUID,
 operationType: DEPOSIT or WITHDRAW,
 amount: 1000
 }
+ ```
 
 Есть возможность возвращать балланс кошелька:
 GET api/v1/wallets/{WALLET_UUID}
