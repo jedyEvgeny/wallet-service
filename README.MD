@@ -15,10 +15,12 @@
    ```bash
    git clone https://github.com/jedyEvgeny/wallet-service.git
    cd wallet-service
-Создайте файл конфигурации:
+Запуск: go run cmd/app/main.go config.env, 
+где config.env - путь к файлу конфигурации
 
-Запустите Docker:
+## Для запуска в Docker-контейнере
+Для запуска в Docker-контейнере в корне проекта наберите:
+docker-compose up --build
 
 Используйте Docker и Docker Compose для запуска базы данных и сервиса:
-
 docker-compose up
