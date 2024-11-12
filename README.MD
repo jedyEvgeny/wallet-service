@@ -13,8 +13,9 @@
 
 ## Установка
 
-**Клонируйте репозиторий**:
+1. **Клонируйте репозиторий**:
 
+   ```bash
    git clone https://github.com/jedyEvgeny/wallet-service.git
    cd wallet-service
 Запуск: go run cmd/app/main.go config.env, 
