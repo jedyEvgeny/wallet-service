@@ -7,6 +7,7 @@
     <img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white">
     <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black">
 </h3> 
+
 ## 1. Описание проекта
 
 Этот учебный сервис предоставляет API для управления кошельками, включая операции пополнения и вывода средств, а также получение статуса кошелька. Сервис написан на языке Go и использует PostgreSQL для хранения данных.
