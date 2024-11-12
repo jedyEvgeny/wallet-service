@@ -40,19 +40,15 @@ const (
 )
 
 func MustLoad() *Config {
-	workingDirApp, err := os.Getwd()
-	if err != nil {
-		log.Fatal(err)
-	}
-	fConfigPath := filepath.Join(workingDirApp, fNameConfig)
-
-	if _, err = os.Stat(fConfigPath); os.IsNotExist(err) {
-		log.Printf("отсутствует файл конфигурации %s: %v. Использована конфигурация по-умолчанию\n",
-			fConfigPath, err)
-	}
+	// workingDirApp, err := os.Getwd()
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// fConfigPath := filepath.Join(workingDirApp, fNameConfig)
+	fConfigPath := filepath.Join(filepath.Dir(os.Args[1]), fNameConfig)
 
 	var cfg Config
-	err = cleanenv.ReadConfig(fConfigPath, &cfg)
+	err := cleanenv.ReadConfig(fConfigPath, &cfg)
 	if err != nil {
 		log.Fatalf(errLoadConfig, err)
 	}
