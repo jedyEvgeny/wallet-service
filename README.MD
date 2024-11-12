@@ -23,7 +23,10 @@
    ```bash
    cd wallet-service
 
-Запуск: go run cmd/app/main.go config.env, 
+3. **Запустите проект в терминале**:
+
+   ```bash
+   go run cmd/app/main.go config.env
 где config.env - путь к файлу конфигурации
 
 ## Для запуска в Docker-контейнере
