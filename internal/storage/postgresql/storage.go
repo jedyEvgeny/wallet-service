@@ -59,7 +59,7 @@ func runDB(cfg *config.Config) (*sql.DB, error) {
 	if err != nil {
 		return nil, fmt.Errorf(errPing, connName, err)
 	}
-	log.Printf(msgPing, connName, tEndPing.Sub(tStartPing))
+	log.Printf(msgTimePing, connName, tEndPing.Sub(tStartPing))
 
 	err = runMigrate(cfg, db)
 	if err != nil {

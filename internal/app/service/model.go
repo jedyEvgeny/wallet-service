@@ -15,6 +15,11 @@ type Response struct {
 }
 
 const (
+	Deposit  = "DEPOSIT"
+	Withdrow = "WITHDRAW"
+)
+
+const (
 	msg201 = "Ресурс создан"
 )
 

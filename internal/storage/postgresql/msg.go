@@ -1,9 +1,10 @@
 package storage
 
 const (
-	msgPing              = "Пинг к БД %s выполнен за %v"
+	msgTimePing          = "Пинг к БД %s выполнен за %v"
 	msgMigrationsNotNeed = "нет изменений схемы БД. Миграции не требуются"
 	msgMigrationsDone    = "Миграции применены"
+	msgTimeInsert        = "[%s] информация внесена в БД за время: %v"
 )
 
 const (
@@ -17,4 +18,13 @@ const (
 	errLaunchMigrations   = "ошибка обновления схемы БД %s: %w"
 	errParseNotActiveConn = "ошибка при парсинге времени ожидания неактивного соединения: %s"
 	errParseLifeConn      = "ошибка при парсинге времени жизни соединения: %s"
+	errCreateTx           = "не смогли создать транзакцию: %w"
+	errCommitTx           = "не смогли подтвердить транзакцию: %w"
+)
+
+const (
+	errStmt        = "не удалось подготовить sql-запрос: %w"
+	errExec        = "не удалось выполнить sql-запрос: %w"
+	errRes         = "не смогли получить результаты sql-запроса: %w"
+	errResAffected = "не выполнены изменения в БД: %w"
 )

@@ -11,10 +11,18 @@ import (
 	"github.com/google/uuid"
 )
 
-type Service struct{}
+type Writer interface {
+	Write(*Wallet, string) error
+}
 
-func New() *Service {
-	return &Service{}
+type Service struct {
+	writerData Writer
+}
+
+func New(w Writer) *Service {
+	return &Service{
+		writerData: w,
+	}
 }
 
 func (s *Service) Check(r *http.Request, requestID string) ([]byte, int) {
@@ -38,6 +46,13 @@ func (s *Service) Check(r *http.Request, requestID string) ([]byte, int) {
 		return dataJson, status
 	}
 	fmt.Println(req) //Логика обработки базы данных
+
+	err = s.writerData.Write(&req, requestID)
+	if err != nil {
+		dataJson, status := prepareResponse(
+			http.StatusInternalServerError, fmt.Sprint(err), requestID, uuid.Nil)
+		return dataJson, status
+	}
 
 	dataJson, status := prepareResponse(
 		http.StatusCreated, msg201, requestID, req.WalletId)
@@ -79,7 +94,7 @@ func isValidJson(req Wallet) error {
 		err = errors.New(msgErr)
 	}
 
-	if req.OperationType != "DEPOSIT" && req.OperationType != "WITHDRAW" {
+	if req.OperationType != Deposit && req.OperationType != Withdrow {
 		if err != nil {
 			err = fmt.Errorf("%w; %w", err, fmt.Errorf(errOperation, req.OperationType))
 		}

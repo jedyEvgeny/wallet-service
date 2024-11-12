@@ -30,7 +30,7 @@ func New() (*App, error) {
 	a.route = createRoute()
 	a.cfg = config.MustLoad()
 	a.db = storage.MustNew(a.cfg)
-	a.service = service.New()
+	a.service = service.New(a.db)
 	a.endpoint = endpoint.New(a.service)
 
 	return a, nil
