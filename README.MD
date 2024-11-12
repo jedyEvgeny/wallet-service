@@ -18,6 +18,9 @@
    ```bash
    git clone https://github.com/jedyEvgeny/wallet-service.git
 
+2. **Перейдите в каталог через терминал**:
+
+   ```bash
 cd wallet-service
 
 Запуск: go run cmd/app/main.go config.env, 
