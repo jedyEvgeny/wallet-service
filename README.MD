@@ -5,8 +5,11 @@
 ## Стек технологий
 
 - Golang
-- PostgreSQL
+- PostgreSQL & pgAdmin
 - Docker
+- Git
+- GitHub
+- Linux
 
 ## Установка
 
