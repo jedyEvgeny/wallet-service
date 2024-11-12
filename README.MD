@@ -17,7 +17,7 @@
 
    ```bash
    git clone https://github.com/jedyEvgeny/wallet-service.git
-   cd wallet-service
+cd wallet-service
 Запуск: go run cmd/app/main.go config.env, 
 где config.env - путь к файлу конфигурации
 
